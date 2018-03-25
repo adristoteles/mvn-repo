@@ -1,0 +1,8 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Fri Apr 01 16:29:26 CEST 2016
+http\://www.ebi.ac.uk/~maven/m2repo/.error=
+file\:${project.basedir}/lib/.error=
+file\:${project.basedir}/lib/.lastUpdated=1459520966610
+http\://dev.biordf.net/maven/.error=
+http\://dev.biordf.net/maven/.lastUpdated=1386086965310
+http\://www.ebi.ac.uk/~maven/m2repo/.lastUpdated=1459520966937

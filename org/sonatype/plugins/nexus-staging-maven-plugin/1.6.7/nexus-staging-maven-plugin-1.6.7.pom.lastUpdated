@@ -1,0 +1,5 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Mon Jul 03 01:58:08 CEST 2017
+http\://repo1.maven.org/maven2/.lastUpdated=1499039888316
+@default-central-http\://your-host\:8081/repository/maven-group/.lastUpdated=1499038968410
+http\://your-host\:8081/repository/maven-group/.error=Could not transfer artifact org.sonatype.plugins\:nexus-staging-maven-plugin\:pom\:1.6.7 from/to central (http\://your-host\:8081/repository/maven-group/)\: your-host

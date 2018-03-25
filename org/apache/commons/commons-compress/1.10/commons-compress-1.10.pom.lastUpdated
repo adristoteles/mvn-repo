@@ -1,0 +1,4 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Mon Jul 03 14:33:59 CEST 2017
+@default-central-http\://your-host\:8081/repository/maven-group/.lastUpdated=1499085239558
+http\://your-host\:8081/repository/maven-group/.error=Could not transfer artifact org.apache.commons\:commons-compress\:pom\:1.10 from/to central (http\://your-host\:8081/repository/maven-group/)\: your-host

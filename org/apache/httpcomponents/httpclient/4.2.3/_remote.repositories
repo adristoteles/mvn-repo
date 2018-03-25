@@ -1,0 +1,8 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Mon Jul 03 14:39:35 CEST 2017
+httpclient-4.2.3.jar>central=
+httpclient-4.2.3.pom>central=
+httpclient-4.2.3.pom>apache-repo-releases=
+httpclient-4.2.3.jar>apache-repo-releases=
+httpclient-4.2.3.pom>maven2=
+httpclient-4.2.3.jar>maven2=

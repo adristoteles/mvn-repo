@@ -1,0 +1,7 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Sun Jun 11 23:36:06 CEST 2017
+http\://paneris.net/maven2/.lastUpdated=1479660009423
+@default-central-http\://your-host\:8081/repository/maven-group/.lastUpdated=1497216966894
+http\://your-host\:8081/repository/maven-group/.error=Could not transfer artifact org.bouncycastle\:bcprov-jdk15\:pom\:1.46 from/to central (http\://your-host\:8081/repository/maven-group/)\: your-host
+http\://paneris.net/maven2/.error=
+http\://openjena.org/repo/.lastUpdated=1479660010248

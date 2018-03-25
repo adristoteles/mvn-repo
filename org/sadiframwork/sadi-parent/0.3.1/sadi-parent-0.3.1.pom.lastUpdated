@@ -1,0 +1,8 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Wed Mar 30 13:18:05 CEST 2016
+@default-dev.biordf.net-http\://dev.biordf.net/maven/.lastUpdated=1459336675574
+https\://repo.maven.apache.org/maven2/.lastUpdated=1459336685924
+http\://dev.biordf.net/maven/.error=Could not transfer artifact org.sadiframwork\:sadi-parent\:pom\:0.3.1 from/to dev.biordf.net (http\://dev.biordf.net/maven)\: connect timed out
+@default-thirdparty.dev.biordf.net-http\://dev.biordf.net/nexus/content/repositories/thirdparty/.lastUpdated=1459336685575
+https\://repo.maven.apache.org/maven2/.error=
+http\://dev.biordf.net/nexus/content/repositories/thirdparty/.error=Could not transfer artifact org.sadiframwork\:sadi-parent\:pom\:0.3.1 from/to thirdparty.dev.biordf.net (http\://dev.biordf.net/nexus/content/repositories/thirdparty)\: connect timed out

@@ -1,0 +1,5 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Thu Jan 21 16:32:42 CET 2016
+http\://repo.maven.apache.org/maven2/.lastUpdated=1453390362190
+default-http\://dev.biordf.net/maven/.lastUpdated=1453390359534
+http\://dev.biordf.net/maven/.error=Could not transfer artifact org.springframework\:spring-remoting\:jar\:2.0.7 from/to dev.biordf.net (http\://dev.biordf.net/maven)\: connection timed out to http\://dev.biordf.net/maven/org/springframework/spring-remoting/2.0.7/spring-remoting-2.0.7.jar

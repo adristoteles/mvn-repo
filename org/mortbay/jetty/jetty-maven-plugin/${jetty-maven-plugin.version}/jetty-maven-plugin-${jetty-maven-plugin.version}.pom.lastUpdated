@@ -1,0 +1,6 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Fri Feb 19 13:21:08 CET 2016
+@default-http\://dev.biordf.net/maven/.lastUpdated=1455884468932
+http\://repo.maven.apache.org/maven2/.error=Could not transfer artifact org.mortbay.jetty\:jetty-maven-plugin\:pom\:${jetty-maven-plugin.version} from/to central (http\://repo.maven.apache.org/maven2)\: Illegal character in path at index 74\: http\://repo.maven.apache.org/maven2/org/mortbay/jetty/jetty-maven-plugin/${jetty-maven-plugin.version}/jetty-maven-plugin-${jetty-maven-plugin.version}.pom
+@default-http\://repo.maven.apache.org/maven2/.lastUpdated=1455884468940
+http\://dev.biordf.net/maven/.error=Could not transfer artifact org.mortbay.jetty\:jetty-maven-plugin\:pom\:${jetty-maven-plugin.version} from/to dev.biordf.net (http\://dev.biordf.net/maven)\: Illegal character in path at index 66\: http\://dev.biordf.net/maven/org/mortbay/jetty/jetty-maven-plugin/${jetty-maven-plugin.version}/jetty-maven-plugin-${jetty-maven-plugin.version}.pom

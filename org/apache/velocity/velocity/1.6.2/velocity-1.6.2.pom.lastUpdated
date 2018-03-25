@@ -1,0 +1,5 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Wed Nov 27 15:01:41 CET 2013
+http\://repo.maven.apache.org/maven2/.lastUpdated=1385560901304
+default-http\://dev.biordf.net/maven/.lastUpdated=1385560901053
+http\://dev.biordf.net/maven/.error=Could not transfer artifact org.apache.velocity\:velocity\:pom\:1.6.2 from/to dev.biordf.net (http\://dev.biordf.net/maven)\: connection timed out to http\://dev.biordf.net/maven/org/apache/velocity/velocity/1.6.2/velocity-1.6.2.pom

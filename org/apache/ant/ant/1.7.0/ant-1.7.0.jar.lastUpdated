@@ -1,0 +1,5 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Tue Dec 03 17:06:47 CET 2013
+http\://repo.maven.apache.org/maven2/.lastUpdated=1386086807415
+default-http\://dev.biordf.net/maven/.lastUpdated=1386086788542
+http\://dev.biordf.net/maven/.error=Could not transfer artifact org.apache.ant\:ant\:jar\:1.7.0 from/to dev.biordf.net (http\://dev.biordf.net/maven)\: connection timed out to http\://dev.biordf.net/maven/org/apache/ant/ant/1.7.0/ant-1.7.0.jar

@@ -1,0 +1,9 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Mon Jul 03 14:39:49 CEST 2017
+ldfserver-0.2.1.jar>=
+ldfserver-0.2.1-classes.jar>=
+ldfserver-0.2.1-sources.jar>=
+ldfserver-0.2.1.pom>=
+ldfserver-0.2.1.war>=
+ldfserver-0.2.1-tests.jar>=
+ldfserver-0.2.1-javadoc.jar>=

@@ -1,0 +1,6 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Mon Jul 03 01:59:45 CEST 2017
+@default-dev.biordf.net-http\://dev.biordf.net/maven/.lastUpdated=1478618181255
+http\://repo1.maven.org/maven2/.lastUpdated=1499039985845
+https\://repo.maven.apache.org/maven2/.lastUpdated=1478618181366
+http\://dev.biordf.net/maven/.error=Could not transfer artifact org.jgrapht\:jgrapht-core\:pom\:0.9.2 from/to dev.biordf.net (http\://dev.biordf.net/maven)\: connect timed out

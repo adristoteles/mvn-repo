@@ -1,0 +1,9 @@
+<?xml version="1.0"?><project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.biomoby</groupId>
+  <artifactId>taverna-for-moby</artifactId>
+  <version>2004</version>
+  <distributionManagement>
+    <status>deployed</status>
+  </distributionManagement>
+</project>

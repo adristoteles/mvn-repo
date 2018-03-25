@@ -1,0 +1,5 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Tue Dec 03 17:06:46 CET 2013
+http\://repo.maven.apache.org/maven2/.lastUpdated=1386086806517
+default-http\://dev.biordf.net/maven/.lastUpdated=1386086788535
+http\://dev.biordf.net/maven/.error=Could not transfer artifact org.openoffice\:juh\:jar\:2.3.1 from/to dev.biordf.net (http\://dev.biordf.net/maven)\: connection timed out to http\://dev.biordf.net/maven/org/openoffice/juh/2.3.1/juh-2.3.1.jar

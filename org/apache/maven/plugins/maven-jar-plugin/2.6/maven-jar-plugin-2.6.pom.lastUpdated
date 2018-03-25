@@ -1,0 +1,5 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Mon Jul 03 14:33:59 CEST 2017
+http\://repo1.maven.org/maven2/.lastUpdated=1499039921269
+@default-central-http\://your-host\:8081/repository/maven-group/.lastUpdated=1499085239242
+http\://your-host\:8081/repository/maven-group/.error=Could not transfer artifact org.apache.maven.plugins\:maven-jar-plugin\:pom\:2.6 from/to central (http\://your-host\:8081/repository/maven-group/)\: your-host

@@ -1,0 +1,9 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Tue Dec 03 17:06:53 CET 2013
+http\://repo.maven.apache.org/maven2/.lastUpdated=1386086807175
+https\://maven-repository.dev.java.net/repository/.error=Could not transfer artifact org.tulsoft\:alltools\:jar\:2.1.1 from/to java.net (https\://maven-repository.dev.java.net/repository/)\: No connector available to access repository java.net (https\://maven-repository.dev.java.net/repository/) of type legacy using the available factories AsyncRepositoryConnectorFactory, WagonRepositoryConnectorFactory
+legacy-https\://maven-repository.dev.java.net/repository/.lastUpdated=1386086808589
+http\://biomoby.org/m2repo/.lastUpdated=1386086813102
+http\://repo.maven.apache.org/maven2/.error=
+default-http\://dev.biordf.net/maven/.lastUpdated=1386086788539
+http\://dev.biordf.net/maven/.error=Could not transfer artifact org.tulsoft\:alltools\:jar\:2.1.1 from/to dev.biordf.net (http\://dev.biordf.net/maven)\: connection timed out to http\://dev.biordf.net/maven/org/tulsoft/alltools/2.1.1/alltools-2.1.1.jar

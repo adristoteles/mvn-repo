@@ -1,0 +1,5 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Wed Nov 27 15:02:02 CET 2013
+http\://repo.maven.apache.org/maven2/.lastUpdated=1385560922219
+default-http\://dev.biordf.net/maven/.lastUpdated=1385560917051
+http\://dev.biordf.net/maven/.error=Could not transfer artifact org.codehaus.plexus\:plexus-utils\:jar\:1.0.4 from/to dev.biordf.net (http\://dev.biordf.net/maven)\: connection timed out to http\://dev.biordf.net/maven/org/codehaus/plexus/plexus-utils/1.0.4/plexus-utils-1.0.4.jar

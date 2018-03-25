@@ -1,0 +1,6 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Mon Jul 03 01:58:56 CEST 2017
+http\://repo1.maven.org/maven2/.error=
+http\://repo1.maven.org/maven2/.lastUpdated=1499039936451
+@default-central-http\://your-host\:8081/repository/maven-group/.lastUpdated=1499027368066
+http\://your-host\:8081/repository/maven-group/.error=Could not transfer artifact org.rdfhdt\:hdt-jena\:pom\:2.0 from/to central (http\://your-host\:8081/repository/maven-group/)\: your-host

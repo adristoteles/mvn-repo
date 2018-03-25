@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.xlightweb</groupId>
+	<artifactId>xlightweb</artifactId>
+	<version>2.10-taverna</version>
+	<name>xLightweb</name>
+	<description>xLightweb is a lightweight, high performance,
+		scalable web network library</description>
+	<packaging>jar</packaging>
+	<url>http://www.xlightweb.org</url>
+	<developers>
+		<developer> 
+			<id>grro</id>
+			<email>grro@xlightweb.org</email> 
+		</developer>
+	</developers> 
+	<licenses>
+		<license>   
+			<name>GNU Lesser General Public License</name> 
+			<url>http://www.gnu.org/licenses/lgpl-2.1.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>   
+	<scm>  
+		<connection> scm:svn:https://svn.sourceforge.net/svnroot/xsocket 
+		</connection>
+	</scm>
+	<distributionManagement>
+		<repository>
+			<id>ftp-repository</id>
+			<url>ftp://localhost/upload</url>
+		</repository>
+	</distributionManagement> 
+	
+	<build>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ftp</artifactId>
+				<version>1.0-alpha-6</version>
+			</extension>
+		</extensions>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<id>copy</id>
+						<configuration>
+							<tasks>
+								<tstamp>
+									<format property="timestamp" pattern="yyyy-MM-dd HH:mm z" />
+								</tstamp>
+								<!--
+									create a version file which will be used at runtime to get
+									version info The standard java packaging version approach will
+									not be used here (version info within manifest file). The
+									manifest-based approach doesn't work if the maven assembly
+									module will be used
+								-->
+								<echo>generating version file</echo>
+								<echo file="src/main/resources/org/xlightweb/version.txt"
+									append="false">Implementation-Version=${project.version} ${line.separator}Implementation-Date=${timestamp} ${line.separator}Dependency.xSocket.Implementation-Version=${xsocket.version}</echo>
+								<echo file="src/main/java/overview.html" append="false"> &lt;!DOCTYPE HTML PUBLIC
+									"-//W3C//DTD HTML 3.2 Final//EN"&gt;
+									&lt;html&gt; &lt;head&gt;
+
+									&lt;/head&gt;
+
+									&lt;body bgcolor="white"&gt;
+									&lt;b&gt; xlightweb 
+									(${project.version}) &lt;/b&gt;
+									&lt;br/&gt;  &lt;/body&gt; &lt;/html&gt;
+								</echo>
+
+								<echo>copy source file for java doc</echo>
+								<copydir src="src/main/java" dest="target/javadocSource"
+								           includes="**/*.java"
+								           excludes="org/xlightweb/AbstractHttpConnection.java, org/xlightweb/RequestHandlerInfo.java, org/xlightweb/ResponseHandlerInfo.java"
+								  />
+								  
+<!-- 								  
+  								<echo>
+                                    delete upload dir 
+                                </echo>
+                                <delete includeemptydirs="true" failonerror="false">
+    								<fileset dir="C:\publicftp\upload\" includes="**/*"/>
+  								</delete>
+ 
+ 								  
+                                <echo>
+                                    download current maven-metadata.xml (required for deploy to get the former releases)
+                                </echo>
+                                <mkdir dir="C:\publicftp\upload\org\xlightweb\xlightweb"/>
+                                <loadresource property="maven-metadata" failOnError="false">
+                                    <url url="http://repo1.maven.org/maven2/org/xlightweb/xlightweb/maven-metadata.xml"/>
+                                </loadresource>
+                                <echo file="C:\publicftp\upload\org\xlightweb\xlightweb\maven-metadata.xml" append="false">
+                                    ${maven-metadata}
+                                </echo>
+  -->
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+					
+					<execution>
+						<phase>package</phase>
+						<id>remove pending test files</id>
+						<configuration>
+							<tasks>
+								<!-- delete pending test files-->
+								<echo>
+									deleting all xSocket test file in ${java.io.tmpdir}
+								</echo>
+								
+								<delete failonerror="false">
+									<fileset dir="${java.io.tmpdir}" includes="**/xSocketTest*"/>
+								</delete>
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>
+							jar-with-dependencies
+						</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifestFile>${project.build.directory}/osgi/MANIFEST.MF</manifestFile>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>1.4.3</version>
+				<configuration>
+					<excludeDependencies>true</excludeDependencies>
+       				<manifestLocation>${project.build.directory}/osgi</manifestLocation>
+					<instructions>
+			            <!-- stops the "uses" clauses being added to "Export-Package" manifest entry -->
+            			<_nouses>true</_nouses>
+						<Export-Package>
+							org.xlightweb*;version=${pom.version}
+						</Export-Package>
+						<Import-Package>
+							javax.*;resolution:=optional,*
+						</Import-Package>
+						<Bundle-RequiredExecutionEnvironment>
+							J2SE-1.5
+						</Bundle-RequiredExecutionEnvironment>
+					</instructions>
+				</configuration>
+				<executions>
+					<execution>
+						<id>bundle-manifest</id>
+						<phase>process-classes</phase>
+						<goals>
+ 							<goal>manifest</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	<properties> 
+        <xsocket.version>2.8</xsocket.version>  
+    </properties>
+	<dependencies>  
+	    <!-- xSocket core --> 
+		<dependency> 
+			<groupId>org.xsocket</groupId>
+			<artifactId>xSocket</artifactId>
+	 		<version>${xsocket.version}</version>
+		</dependency>   
+		<!-- test dependencies -->
+       <dependency>
+			<groupId>org.xsocket</groupId>
+			<artifactId>xSocket-multiplexed</artifactId>
+			<version>2.1.6</version>
+			<scope>test</scope> 
+		</dependency> 		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.4</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>   
+			<groupId>org.mortbay.jetty</groupId>
+			<version>7.0.0pre1</version>
+			<artifactId>jetty</artifactId>
+			<scope>test</scope> 			
+		</dependency>
+   		<dependency>  
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring</artifactId>
+			<version>2.5</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>1.4</version>
+            <scope>test</scope>
+        </dependency>
+		<dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.2.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>1.4</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.json-lib</groupId>
+            <artifactId>json-lib</artifactId>
+            <version>2.2.3</version>
+            <classifier>jdk15</classifier>           
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jaxrs</artifactId>
+            <version>1.1.GA</version>
+            <scope>test</scope>
+			<exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>jcl-over-slf4j</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-simple</artifactId>
+                </exclusion>
+            </exclusions>            
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-multipart-provider</artifactId>
+            <version>1.1.GA</version>
+            <scope>test</scope>
+        </dependency>        
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>jaxrs-api</artifactId>
+            <version>1.1-RC2</version>
+            <scope>test</scope>
+        </dependency>
+	    <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.5.6</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+        	<groupId>org.slf4j</groupId>
+        	<artifactId>slf4j-api</artifactId>
+        	<version>1.5.8</version>
+        	<scope>test</scope>
+        </dependency> 
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.15</version>
+			<scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jdmk</groupId>
+            <artifactId>jmxtools</artifactId>
+            <version>1.2.1</version>
+            <scope>test</scope>
+        </dependency>
+		<dependency>
+			<groupId>gr.spinellis</groupId>
+			<artifactId>UmlGraph</artifactId>
+			<version>4.6</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>gr.spinellis</groupId>
+			<artifactId>UmlGraph</artifactId>
+			<version>4.6</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<reporting>
+		<plugins>
+			<plugin>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<doclet>
+						gr.spinellis.umlgraph.doclet.UmlGraphDoc
+					</doclet>
+					<docletArtifact> 
+						<groupId>gr.spinellis</groupId>
+						<artifactId>UmlGraph</artifactId>
+						<version>4.6</version>
+					</docletArtifact>
+					<additionalparam>
+						-inferrel -inferdep -inferreltype depend
+						-inferdepvis private -quiet -hide java.lang.* -hide org.xlightweb.HttpUtils.* 
+						-hide org.xlightweb.HttpUtils.HttpResponseHandlerInfo 
+						-hide org.xlightweb.RequestHandlerInfo -hide org.xlightweb.ResponseHandlerInfo
+						-hide org.xlightweb.HttpUtils.HttpResponseHandlerInfo -hide org.xlightweb.BodyForwarder.*  -hide
+						org.xsocket.DataConverter -hide
+						org.xsocket.SerializedTaskQueue -hide
+						org.xsocket.Resource -hide org.xlightweb.HttpUtils.* -hide
+						org.xlightweb.client.HttpClient.*r -hide
+						org.xlightweb.client.TransactionMonitor -hide org.xlightweb.client.TransactionMonitor.* -hide org.xlightweb.client.SessionManager -hide org.xlightweb.client.AutoRedirectHandler -hide org.xlightweb.client.CookieHandler  -hide org.xlightweb.client.HttpClientConnection.* -hide
+						org.xlightweb.server.HttpServerConnection.ConnectionCloser -hide
+						org.xlightweb.AbstractHttpConnection -hide
+						org.xlightweb.AbstractHttpConnection.IMessageHandler 
+						-hide org.xlightweb.BodyDataSink.NonBlockingStream -hide org.xlightweb.IMessageWriter -hide org.xsocket.connection.IWriteCompletionHandler -hide org.xlightweb.server.HttpProtocolAdapter.SessionManagerInfoMBean -hide
+						org.xlightweb.AbstractHttpConnection.DataSourceSinkPair -hide
+						org.xlightweb.AbstractHttpConnection.MultithreadedTaskProcessor
+						-hide org.xlightweb.client.RedirectHandler -hide org.xlightweb.client.RetryHandler -hide org.xlightweb.Context.HolderCache -hide org.xlightweb.RequestHandlerBase -hide org.xlightweb.CacheHandler.HitStatistics -hide org.xlightweb.RequestHandlerBase -hide org.xlightweb.RequestHandlerChain.MultimodeExecutor -hide org.xlightweb.BodyType -hide org.xlightweb.WriteCompletionManager -hide org.xlightweb.HttpRequestHandler.HandlerInfo -hide java.nio.channels.FileChannel.MapMode -hide java.nio.MappedByteBuffer -hide javax.management.MBeanServer -hide java.io.PrintStream -hide java.io.ByteArrayOutputStream -hide javax.management.ObjectName -hide javax.management.MBeanRegistration
+						-hide
+						org.xlightweb.AbstractHttpConnection -hide
+						org.xlightweb.AbstractHttpConnection.*
+						-hide java.util.Date -hide java.text.* -hide
+						org.xlightweb.NonBlockingBodyDataSource.HandlerCaller
+						-hide org.xsocket.connection.IConnection.* -hide org.xsocket.connection.AbstractNonBlockingStream -hide
+						org.xlightweb.client.HttpClient.TransactionLog
+						AbstractMessage -hide
+						org.xlightweb.AbstractMessage
+						-hide
+						org.xlightweb.AbstractMessageHeader -hide org.xlightweb.client.ProxyHandler -hide org.xlightweb.AbstractHttpHeader
+						-hide org.xlightweb.IUnsynchronized -hide java.nio.ByteBuffer -hide
+						org.xlightweb.server.ServerUtils.*Info
+						-hide
+						org.xlightweb.client.ClientUtils.*Info
+						java.util.concurrent.ThreadFactory -hide
+						java.util.concurrent.ThreadFactory -hide
+						java.util.concurrent.atomic.* -hide
+						java.util.logging.* -hide org.xlightweb.client.SessionManager -hide org.xlightweb.BodyDataSink.Multipart -hide
+						org.xlightweb.client.HttpClientConnection.*Adapter
+						-hide org.xlightweb.client.CacheHandler -hide org.xlightweb.server.TransactionMonitor.TransactionLog -hide org.xlightweb.client.TransactionMonitor.TransactionLog -hide org.xlightweb.server.TransactionMonitor*
+						-hide
+						org.xlightweb.server.HttpServerConnection.*Adapter
+						-hide org.xlightweb.server.HttpProtocolAdapter.SessionManagerInfoMBean -hide java.io.ObjectOutputStream -hide java.net.* -hide java.io.File -hide java.io.RandomAccessFile -hide org.xlightweb.NonBlockingBodyDataSource.NonBlockingStream -hide org.xlightweb.NonBlockingBodyDataSource.TimeoutWatchDogTask -hide java.io.InputStreamReader -hide java.io.LineNumberReader -hide java.util.* -hide org.xlightweb.AbstractHttpConnection -hide org.xlightweb.BlockingBodyDataSource.ReadNotificationHandler -hide org.xlightweb.AbstractBodyForwarder.BodyDataSink -hide org.xlightweb.AbstractBodyForwarder.ForwardTask -hide org.xlightweb.server.HttpServerConnection.TimeoutWatchDogTask -hide org.xlightweb.AbstractHttpMessage -hide org.xlightweb.client.HttpClientConnection.WatchDogTask -hide org.xlightweb.client.HttpClientConnection.WatchDogTask -hide org.xlightweb.client.HttpClientConnection.ConnectionAutoCloseListener -hide org.xlightweb.client.HttpClientConnection.ConnectionAutoCloseListener -hide org.xlightweb.server.HttpServerConnection.BodyCompleteListener -hide org.xlightweb.HttpServerConnection.OnRequestCaller -hide .*Exception -hide
+						java.util.(.*)List(.*) -hide
+						java.util.(.*)Map(.*) -hide
+						java.util.(.*)Set(.*) -hide
+						java.util.Collections -useimports
+						-postfixpackage -qualify -nodefontsize 9
+						-nodefontpackagesize 7 -outputencoding UTF-8
+						-link http://java.sun.com/j2se/1.5.0/docs/api
+						-link
+						http://xsocket.sourceforge.net/core/apidocs/2_8
+					</additionalparam>
+
+					<sourcepath>target/javadocSource</sourcepath>
+					<show>protected</show>
+					<overview>
+						${basedir}/src/main/java/overview.html
+					</overview>
+					<bottom>
+						Copyright {inceptionYear}-{currentYear}
+						xLightweb.org
+					</bottom>
+				</configuration>
+			</plugin>
+			<plugin>
+   				<groupId>org.codehaus.mojo</groupId>
+      			<artifactId>findbugs-maven-plugin</artifactId>
+      			<version>1.2</version>
+       			<configuration>
+			        <excludeFilterFile>findbugs-exclude.xml</excludeFilterFile>
+			        <xmlOutput>true</xmlOutput> 
+		    	</configuration> 
+    		</plugin>    
+       		<plugin>
+        		<groupId>org.apache.maven.plugins</groupId>
+        		<artifactId>maven-pmd-plugin</artifactId>
+        		<configuration>
+					<targetJdk>1.5</targetJdk>
+					<excludes>
+					    <!-- TODO: rule exclude instead of class exclude would 
+					         be the better approach. But how to do this? -->	
+					         
+						<!-- Avoid empty catch blocks -->
+            			<exclude>org/xlightweb/BodyDataSink.java</exclude>
+					    
+					    <!-- Avoid unused private methods such as 'addPart(ByteBuffer...)'. -->     
+					    <exclude>org/xlightweb/MultipartFormDataRequest.java</exclude>
+					         
+					    <!-- Avoid empty catch blocks (BufferUnderflowException) -->
+					    <exclude>org/xlightweb/PartParser.java</exclude>
+					    <exclude>org/xlightweb/FileDataSource.java</exclude>
+					    <exclude>org/xlightweb/FileDataSink.java</exclude>
+            			<exclude>org/xlightweb/HttpProtocolHandlerClientSide.java</exclude>
+            			<exclude>org/xlightweb/HttpProtocolHandlerServerSide.java</exclude>
+            			<exclude>org/xlightweb/NonBlockingBodyDataSource.java</exclude>
+            			<exclude>org/xlightweb/AbstractHttpConnection.java</exclude>
+            			<exclude>org/xlightweb/AbstractHttpProtocolHandler.java</exclude>
+            			<exclude>org/xlightweb/BodyForwarder.java</exclude>
+            			<exclude>org/xlightweb/CacheHandler.java</exclude>
+                        <exclude>org/xlightweb/client/HttpClientConnectionPool.java</exclude>
+                        
+            								    				    
+					    <!-- CPD: code duplications -->
+            			<exclude>org/xlightweb/IHttpRequest.java</exclude>  
+            			<exclude>org/xlightweb/FullMessageBodyDataSink.java</exclude>
+            			<exclude>org/xlightweb/IHttpRequestHeader.java</exclude>
+            			<exclude>org/xlightweb/BlockingBodyDataSource.java</exclude>
+            			<exclude>org/xlightweb/HttpRequestHeaderParser.java</exclude>
+						<exclude>org/xlightweb/HttpResponseHeaderParser.java</exclude>
+            			<exclude>org/xlightweb/HttpUtils.java</exclude>
+            			<exclude>org/xlightweb/MultipartByteRangeFileDataSource.java</exclude>
+            			<exclude>org/xlightweb/FileDataSource.java</exclude>
+            			<exclude>org/xlightweb/RequestHandlerChain.java</exclude>
+            			<exclude>org/xlightweb/client/SessionManager.java</exclude>
+            			<exclude>org/xlightweb/client/HttpClientConnection.java</exclude>
+            			<exclude>org/xlightweb/server/SessionManager.java</exclude>
+            			<exclude>org/xlightweb/server/ServerUtils.java</exclude>
+            			<exclude>org/xlightweb/server/HttpServerConnection.java</exclude>
+            			<exclude>org/xlightweb/server/TransactionMonitor.java</exclude>
+          			</excludes>
+				</configuration>
+      		</plugin>
+    		
+    	<!-- <plugin>
+            	<groupId>org.apache.maven.plugins</groupId>
+        		<artifactId>maven-checkstyle-plugin</artifactId>
+      		</plugin> -->
+    		
+		<!-- 	<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<formats>
+						<format>xml</format>
+						<format>html</format>
+					</formats> 
+				</configuration>
+			</plugin> -->
+		</plugins>
+	</reporting>
+</project>

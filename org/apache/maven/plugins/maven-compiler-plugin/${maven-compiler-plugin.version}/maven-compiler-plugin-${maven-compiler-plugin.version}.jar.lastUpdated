@@ -1,0 +1,6 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Fri Feb 19 13:27:09 CET 2016
+@default-http\://dev.biordf.net/maven/.lastUpdated=1455884829831
+default-http\://repo.maven.apache.org/maven2/.lastUpdated=1452698656859
+http\://repo.maven.apache.org/maven2/.error=Could not transfer artifact org.apache.maven.plugins\:maven-compiler-plugin\:jar\:${maven-compiler-plugin.version} from/to central (http\://repo.maven.apache.org/maven2)\: Illegal character in path at index 84\: http\://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/${maven-compiler-plugin.version}/maven-compiler-plugin-${maven-compiler-plugin.version}.jar
+http\://dev.biordf.net/maven/.error=Could not transfer artifact org.apache.maven.plugins\:maven-compiler-plugin\:jar\:${maven-compiler-plugin.version} from/to dev.biordf.net (http\://dev.biordf.net/maven)\: Illegal character in path at index 76\: http\://dev.biordf.net/maven/org/apache/maven/plugins/maven-compiler-plugin/${maven-compiler-plugin.version}/maven-compiler-plugin-${maven-compiler-plugin.version}.jar

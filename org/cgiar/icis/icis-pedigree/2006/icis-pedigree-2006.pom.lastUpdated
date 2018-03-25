@@ -1,0 +1,11 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Tue Dec 03 17:05:58 CET 2013
+http\://dev.biordf.net/nexus/content/repositories/thirdparty/.lastUpdated=1386086758380
+http\://dev.biordf.net/maven/.lastUpdated=1386086757760
+legacy-https\://maven-repository.dev.java.net/repository/.lastUpdated=1386086758385
+http\://repo.maven.apache.org/maven2/.lastUpdated=1386086757930
+http\://dev.biordf.net/nexus/content/repositories/thirdparty/.error=
+http\://dev.biordf.net/maven/.error=
+http\://repo.maven.apache.org/maven2/.error=
+https\://maven-repository.dev.java.net/repository/.error=Could not transfer artifact org.cgiar.icis\:icis-pedigree\:pom\:2006 from/to java.net (https\://maven-repository.dev.java.net/repository/)\: No connector available to access repository java.net (https\://maven-repository.dev.java.net/repository/) of type legacy using the available factories AsyncRepositoryConnectorFactory, WagonRepositoryConnectorFactory
+http\://biomoby.org/m2repo/.lastUpdated=1386086758764

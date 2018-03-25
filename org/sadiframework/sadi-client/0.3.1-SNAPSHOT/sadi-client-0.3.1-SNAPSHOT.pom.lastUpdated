@@ -1,0 +1,14 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Sun Jun 11 23:07:46 CEST 2017
+file\:C\:\\Users\\ADRIANJOSE\\workspace101\\sadi.service.examples/lib/.lastUpdated=1478862220102
+https\://oss.sonatype.org/content/repositories/snapshots/.error=
+file\:C\:\\Users\\ADRIANJOSE\\workspace101\\sadi.service.examples/lib/.error=
+http\://dev.biordf.net/nexus/content/repositories/thirdparty/.lastUpdated=1460377583360
+http\://your-host\:8081/repository/maven-group/.error=Could not transfer artifact org.sadiframework\:sadi-client\:pom\:0.3.1-SNAPSHOT from/to central (http\://your-host\:8081/repository/maven-group/)\: your-host
+http\://dev.biordf.net/maven/.lastUpdated=1460377583008
+http\://dev.biordf.net/nexus/content/repositories/thirdparty/.error=
+http\://dev.biordf.net/maven/.error=
+https\://oss.sonatype.org/content/repositories/snapshots/.lastUpdated=1478862186059
+http\://www.ebi.ac.uk/~maven/m2repo/.lastUpdated=1478862220195
+@default-central-http\://your-host\:8081/repository/maven-group/.lastUpdated=1497215266822
+http\://www.ebi.ac.uk/~maven/m2repo/.error=

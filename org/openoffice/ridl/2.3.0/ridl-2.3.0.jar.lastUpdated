@@ -1,0 +1,5 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Tue Dec 03 17:06:45 CET 2013
+http\://repo.maven.apache.org/maven2/.lastUpdated=1386086805749
+default-http\://dev.biordf.net/maven/.lastUpdated=1386086788528
+http\://dev.biordf.net/maven/.error=Could not transfer artifact org.openoffice\:ridl\:jar\:2.3.0 from/to dev.biordf.net (http\://dev.biordf.net/maven)\: connection timed out to http\://dev.biordf.net/maven/org/openoffice/ridl/2.3.0/ridl-2.3.0.jar

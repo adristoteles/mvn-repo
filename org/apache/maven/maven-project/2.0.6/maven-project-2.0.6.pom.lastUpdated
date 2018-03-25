@@ -1,0 +1,5 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Wed Nov 27 14:54:49 CET 2013
+http\://repo.maven.apache.org/maven2/.lastUpdated=1385560489721
+default-http\://dev.biordf.net/maven/.lastUpdated=1385560489405
+http\://dev.biordf.net/maven/.error=Could not transfer artifact org.apache.maven\:maven-project\:pom\:2.0.6 from/to dev.biordf.net (http\://dev.biordf.net/maven)\: connection timed out to http\://dev.biordf.net/maven/org/apache/maven/maven-project/2.0.6/maven-project-2.0.6.pom

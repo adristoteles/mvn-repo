@@ -1,0 +1,6 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Mon Jul 03 13:38:42 CEST 2017
+zookeeper-3.4.6.pom>maven2=
+zookeeper-3.4.6.jar>maven2=
+zookeeper-3.4.6.jar>central=
+zookeeper-3.4.6.pom>central=
